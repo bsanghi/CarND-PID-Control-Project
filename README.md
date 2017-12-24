@@ -30,7 +30,7 @@ To run the twiddle optimization, you have to change the value of use_twiddle to 
 
 The final values are :
 
-Kp = 0.557702 , Ki=0.001 , Kd=2.86226
+Kp = 0.60 , Ki=0.001 , Kd=3.07
 
 The video with the final parameter values :
 
