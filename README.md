@@ -10,6 +10,9 @@ steering angle data via local websocket.
 
 ## Rubic Discussion Points
 
+The output of a PID depends on three hyperparameters, one for each term of our controller (P-I-D). These hyperparameters are specific 
+to each application, which in our case is driving a car smoothly around a test track.
+
 1.The P component had the most clear effect on the car's behavior. 
 It causes the car to steer proportional (and opposite) to the car's distance from the lane center. 
 You can see it from the following video.
