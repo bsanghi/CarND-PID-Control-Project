@@ -29,21 +29,14 @@ std::string hasData(std::string s) {
   return "";
 }
 
-std::ofstream steer_log;
-
 int main()
 {
   uWS::Hub h;
 
-  if( !steer_log.is_open() ){
-      cout << "Error opening steer_log" << endl;
-      exit(1);
-  }
-
   PID pid_steer;
   // PID pid_throttle;
   // TODO: Initialize the pid variable.
-  pid_steer.Init(0.36, 0.001, 2.1);
+  pid_steer.Init(0.56, 0.001, 3.07);
   //pid.Init(0.10, 0.001, 1.5);
 
 

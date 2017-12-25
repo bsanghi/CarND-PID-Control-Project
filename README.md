@@ -6,23 +6,22 @@
 
 The purpose of this project was to "build a PID controller and tune the PID hyperparameters by applying the general processing flow as 
 described in the lessons," and to "test your solution on the simulator!" The simulator provides cross-track error (CTE), speed, and 
-steering angle data via local websocket. The PID (proportional/integral/differential) controller must respond with steering and throttle
- commands to drive the car reliably around the simulator track.
+steering angle data via local websocket. 
 
 ## Rubic Discussion Points
 
 I have used PID controller with twiddle algorithm inside a state machine to optimize P,I, D parameters. The I part of the algorithm was 
-ignored because there is no bias. But, i chose small value(0.001) for Ki. 
+ignored because there is no bias or almost no bias. The small value(0.001) is used for Ki. 
 
-I lowered default throttle value to 0.2 and reduced more(0.1) when making turns so that it does not oversteer. 
+The default throttle value was lowered to 0.2 and reduced more(0.1) when making turns so that it does not oversteer. 
 
-I directly implemented the twiddle algorithm. But, I have to choose reasonable initial values for p and dp. 
+I directly implemented the twiddle algorithm. But, I had to choose reasonable initial values for p and dp. 
 Hyperparameters were tuned manually at first. This was necessary because the narrow track left little room for error.
 
-I used 1260*3 steps(around 3 turns) for each iteration to calculate the average error because number of steps for one turns is not 
+I used 3780 steps(around 3 turns) for each iteration to calculate the average error because number of steps for one turns is not 
 constant because each iteration has different parameters. By the comparing ave_error2=sum(cte*cte)/number of steps for each iteration, 
 we calculated the optimial values. 
-It takes almost hundred iterations to satisfy the condition(sum(dp) < 0.2 ) even we choose reasonable values for p.
+It takes eighty iterations to satisfy the condition(sum(dp) < 0.2 ) even we choose reasonable values for p.
 
 ![alt text][image1]
 
@@ -30,11 +29,11 @@ To run the twiddle optimization, you have to change the value of use_twiddle to 
 
 The final values are :
 
-Kp = 0.60 , Ki=0.001 , Kd=3.07
+Kp = 0.56 , Ki=0.001 , Kd=3.07
 
 The video with the final parameter values :
 
-[ pid video with the final parameters ](./final_video.mp4)
+[ pid video with the final parameters ](./final_pid_video.mp4)
 
 ---
 
