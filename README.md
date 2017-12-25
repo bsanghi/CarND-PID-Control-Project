@@ -18,7 +18,7 @@ It causes the car to steer proportional (and opposite) to the car's distance fro
 You can see it from the following video.
 [ pid video with the following parameters(Kp=0.5, Ki=0, Kd=0) ](./only_p_050.mp4)
 
-2. The D component counteracts the P component's tendency to overshoot and helps to converge to center line smoothly.
+2.The D component counteracts the P component's tendency to overshoot and helps to converge to center line smoothly.
 However, when only Kd is nonzero , it does not have much effect and the car keeps its initial direction.
 
 [ pid video with the following parameters(Kp=0.0, Ki=0, Kd=3.0) ](./only_d_30.mp4)
