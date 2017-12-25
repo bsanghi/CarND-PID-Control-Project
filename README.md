@@ -10,8 +10,24 @@ steering angle data via local websocket.
 
 ## Rubic Discussion Points
 
+1.The P component had the most clear effect on the car's behavior. 
+It causes the car to steer proportional (and opposite) to the car's distance from the lane center. 
+You can see it from the following video.
+[ pid video with the following parameters(Kp=0.5, Ki=0, Kd=0) ](./only_p_050.mp4)
+
+2. The D component counteracts the P component's tendency to overshoot and helps to converge to center line smoothly.
+However, when only Kd is nonzero , it does not have much effect and the car keeps its initial direction.
+
+[ pid video with the following parameters(Kp=0.0, Ki=0, Kd=3.0) ](./only_d_30.mp4)
+
+3.The I component counteracts a bias or miss-alignment in the CTE which prevents the P-D controller from reaching the center line. 
+In our case, the bias is small. However, when we use the large K_i value, it can cause the large deviation from the center line.
+You can see it from the following video.
+
+[ pid video with the following parameters(Kp=0.0, Ki=0.1, Kd=0.0) ](./only_i_010.mp4) 
+
 I have used PID controller with twiddle algorithm inside a state machine to optimize P,I, D parameters. The I part of the algorithm was 
-ignored because there is no bias or almost no bias. The small value(0.001) is used for Ki. 
+ignored because there is no bias or almost no bias. The small value(0.001) is used for Ki.
 
 The default throttle value was lowered to 0.2 and reduced more(0.1) when making turns so that it does not oversteer. 
 
