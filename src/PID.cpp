@@ -73,13 +73,13 @@ void PID::Twiddle(double AveError ){
 
   double sum_dp = fabs(dp[0])+fabs(dp[1]);
   if ( sum_dp <= tol ) {
-    std::cout << "Reached the precision we wanted"<< std::endl;
-		std::cout << "Sum_dp="<< sum_dp << std::endl;
+    //std::cout << "Reached the precision we wanted"<< std::endl;
+		//std::cout << "Sum_dp="<< sum_dp << std::endl;
 	}
 
   if ( sum_dp > 0.2 and count_opt == 0) {
-    std::cout << "********************* Iter="<< count_it<<"******************************"<<std::endl;
-    std::cout << "From State=" << next_state << " , last_index=" << last_index << std::endl;
+    //std::cout << "********************* Iter="<< count_it<<"******************************"<<std::endl;
+    //std::cout << "From State=" << next_state << " , last_index=" << last_index << std::endl;
     switch (next_state) {
       case 0:{
         p[last_index] += dp[last_index];
@@ -112,13 +112,13 @@ void PID::Twiddle(double AveError ){
       }        
     }
 
-    std::cout << "To State =" << next_state << " , last_index=" << last_index << std::endl;
-    std::cout << "AveError =" << AveError<<std::endl;
-    std::cout << "dP values =" << dp[0] << " "<< dp[1]  << ",    Sum="<< dp[0]+dp[1]<<std::endl;
+    //std::cout << "To State =" << next_state << " , last_index=" << last_index << std::endl;
+    //std::cout << "AveError =" << AveError<<std::endl;
+    //std::cout << "dP values =" << dp[0] << " "<< dp[1]  << ",    Sum="<< dp[0]+dp[1]<<std::endl;
 
     Kp=p[0];
     Kd=p[1];
-    std::cout << "Kp=" << Kp << " , Ki="<< Ki <<" , Kd="<< Kd << std::endl;
+    //std::cout << "Kp=" << Kp << " , Ki="<< Ki <<" , Kd="<< Kd << std::endl;
   }
   
 }
